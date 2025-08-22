@@ -1,12 +1,33 @@
 <?php
-$database_username = 'Indes_goldslide'; /* User */
-$database_password = 'ef99d455fe29d8a767b5eec740922efb1c4b9a61'; /* Password */
-$database_DB = "Indes_goldslide";
+// Configuración de la base de datos
+//$servername = "localhost";
+//$username = "root";
+//$password = ""; // Agregar contraseña si es necesario
+//$database = "Indes_goldslide";
+
+// OnLine 
+$servername = "v2k5a1.h.filess.io";
+$username = "Indes_goldslide";
+$password = "ef99d455fe29d8a767b5eec740922efb1c4b9a61"; // Agregar contraseña si es necesario
+$database = "Indes_goldslide";
+
 try {
-     $pdo_conn = new PDO( 'mysql:host=v2k5a1.h.filess.io;dbname='.$database_DB, $database_username, $database_password, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8") );
-     // $pdo_conn = new PDO( 'mysql:host=localhost;dbname='.$database_DB, $database_username, $database_password );
-} catch (PDOException $e) {
-    print "¡Error!: " . $e->getMessage() . "<br/>";
-    die();
+    // Crear conexión PDO
+    $pdo = new PDO("mysql:host=$servername;dbname=$database;charset=utf8mb4", $username, $password);
+    
+    // Establecer el modo de error de PDO a excepción
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    
+    // Configurar para obtener resultados como arrays asociativos
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    
+} catch(PDOException $e) {
+    die("Error de conexión: " . $e->getMessage());
 }
-// Connections/Connection_PDO.php
+
+// Función para cerrar la conexión
+function closeConnection() {
+    global $pdo;
+    $pdo = null;
+}
+?>
