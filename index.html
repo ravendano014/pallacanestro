@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basketball Tournament Management</title>
+    <title>Gestión de Torneos de Baloncesto</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/metro-ui@latest/css/metro-all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -14,13 +14,13 @@
             --dark-color: #1a1a1a;
             --light-color: #f8f9fa;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5;
-            color: #333;
+            background-color: var(--light-color);
+            color: var(--dark-color);
         }
-        
+
         .header {
             background: linear-gradient(135deg, var(--primary-color), #0d3268);
             color: white;
@@ -29,8 +29,8 @@
             margin-bottom: 2rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        
-        .logo {
+
+        .header .logo {
             font-size: 2.5rem;
             font-weight: bold;
             letter-spacing: 2px;
@@ -38,26 +38,26 @@
             color: var(--accent-color);
         }
         
-        .slogan {
+        .header .slogan {
             font-size: 1.2rem;
             margin-bottom: 1rem;
             opacity: 0.9;
         }
-        
+
         .main-container {
-            padding: 0 1rem;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 1rem;
         }
-        
+
         .card {
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 2rem;
-            background: white;
+            background-color: white;
             overflow: hidden;
         }
-        
+
         .card-header {
             background-color: var(--primary-color);
             color: white;
@@ -65,11 +65,11 @@
             font-size: 1.2rem;
             font-weight: bold;
         }
-        
+
         .card-content {
             padding: 1.5rem;
         }
-        
+
         .match-card {
             background: linear-gradient(135deg, #2c3e50, #4a6491);
             color: white;
@@ -79,19 +79,19 @@
             text-align: center;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
-        
+
         .teams {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             align-items: center;
             margin-bottom: 1rem;
         }
-        
+
         .team {
             text-align: center;
             flex: 1;
         }
-        
+
         .team-name {
             font-size: 1.5rem;
             font-weight: bold;
@@ -111,14 +111,14 @@
             color: var(--primary-color);
             margin-bottom: 0.5rem;
         }
-        
+
         .vs {
             font-size: 1.8rem;
             font-weight: bold;
             color: var(--accent-color);
             margin: 0 1rem;
         }
-        
+
         .match-date {
             background-color: var(--secondary-color);
             color: white;
@@ -128,7 +128,7 @@
             margin-bottom: 1rem;
             font-weight: bold;
         }
-        
+
         .btn-custom {
             background-color: var(--secondary-color);
             color: white;
@@ -136,38 +136,41 @@
             padding: 0.8rem 2rem;
             border-radius: 30px;
             font-weight: bold;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
         }
-        
+
         .btn-custom:hover {
             background-color: #c62828;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: white;
         }
-        
+
         .feature-box {
             text-align: center;
             padding: 1.5rem;
             border-radius: 8px;
             background: white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             height: 100%;
         }
-        
+
         .feature-box:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
         }
-        
+
         .feature-icon {
             font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
         }
-        
+
         .footer {
             background-color: var(--dark-color);
             color: white;
@@ -175,31 +178,53 @@
             margin-top: 3rem;
             text-align: center;
         }
-        
-        .social-links {
-            margin-top: 1rem;
-        }
-        
+
         .social-links a {
             color: white;
             font-size: 1.5rem;
             margin: 0 0.5rem;
-            transition: all 0.3s;
+            transition: color 0.3s ease;
         }
-        
+
         .social-links a:hover {
             color: var(--accent-color);
+        }
+
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .data-item:last-child {
+            border-bottom: none;
+        }
+        
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .table-custom th, .table-custom td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .table-custom thead th {
+            background-color: #f2f2f2;
+            font-weight: bold;
         }
         
         @media (max-width: 768px) {
             .teams {
                 flex-direction: column;
             }
-            
             .team {
                 margin-bottom: 1.5rem;
             }
-            
             .vs {
                 margin: 1rem 0;
             }
@@ -207,50 +232,48 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+
     <header class="header">
         <div class="logo"><img src="images/logo.jpg" alt="Indes"></div>
-        <div class="slogan">Basketball Competition</div>
-        <div class="slogan">Web Edition</div>
+        <h1 class="slogan">Basketball Competition</h1>
+        <p class="slogan">Web Edition</p>
     </header>
 
-    <div class="main-container">
-        <!-- Main Match Section -->
-        <div class="match-card">
-            <div class="match-date">29 AUGUST 2022</div>
+    <main class="main-container">
+        <section class="match-card">
+            <h2 class="match-date">29 AGOSTO 2022</h2>
             <div class="teams">
                 <div class="team">
-                    <div class="team-logo">
+                    <div class="team-logo" aria-label="Logo del equipo A">
                         <i class="fas fa-basketball-ball"></i>
                     </div>
                     <div class="team-name">TEAM A</div>
                 </div>
                 <div class="vs">VS</div>
                 <div class="team">
-                    <div class="team-logo">
+                    <div class="team-logo" aria-label="Logo del equipo B">
                         <i class="fas fa-basketball-ball"></i>
                     </div>
                     <div class="team-name">TEAM B</div>
                 </div>
                 <div class="pos-relative h-100 d-flex flex-justify-content-end">
-                    <img src="images/JL.png" alt="Lebron">
+                    <img src="images/JL.png" alt="Lebron" width="50%" height="50%">
                 </div>
             </div>
-            <button class="btn-custom">Cancha Sede</button>
-            <div class="mt-2">
-                <a href="https://ravendano014.github.io/pallacanestro/" class="text-light fg-white">https://ravendano014.github.io/pallacanestro/</a>
-            </div>
-        </div>
+            <a href="https://ravendano014.github.io/pallacanestro/" class="btn-custom">Cancha Sede</a>
+            <p class="mt-2 text-white">
+                <a href="https://ravendano014.github.io/pallacanestro/" class="text-white" target="_blank" rel="noopener noreferrer">https://ravendano014.github.io/pallacanestro/</a>
+            </p>
+        </section>
 
-        <!-- Tournament Management Features -->
-        <div class="row mt-6">
+        <section class="row mt-6">
             <div class="cell-md-4">
                 <div class="feature-box">
                     <div class="feature-icon">
                         <i class="fas fa-trophy"></i>
                     </div>
-                    <h3>Tournament Management</h3>
-                    <p>Create and manage basketball tournaments with our easy-to-use system. Schedule games, track scores, and manage teams.</p>
+                    <h3>Gestión de Torneos</h3>
+                    <p>Crea y gestiona torneos de baloncesto con nuestro sistema fácil de usar. Programa juegos, rastrea puntajes y administra equipos.</p>
                 </div>
             </div>
             <div class="cell-md-4">
@@ -258,94 +281,75 @@
                     <div class="feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3>Team Management</h3>
-                    <p>Register teams, manage rosters, and track player statistics throughout the tournament.</p>
+                    <h3>Gestión de Equipos</h3>
+                    <p>Registra equipos, gestiona listas y rastrea las estadísticas de los jugadores a lo largo del torneo.</p>
                 </div>
             </div>
-            <div class="cell-md-4">
-                <div class="feature-box">
-                    <div class="feature-icon">
-                        <i class="fas fa-ticket-alt"></i>
-                    </div>
-                    <h3>Ticket Booking</h3>
-                    <p>Offer seamless ticket booking experience for your fans with our integrated system.</p>
-                </div>
-            </div>
-        </div>
+        </section>
 
-        <!-- Upcoming Matches -->
-        <div class="card mt-6">
-            <div class="card-header">UPCOMING MATCHES</div>
+        <section class="card mt-6">
+            <header class="card-header">PRÓXIMOS PARTIDOS</header>
             <div class="card-content">
-                <div class="row">
-                    <div class="cell-md-6">
-                        <ul class="data-list">
-                            <li>
-                                <div class="data-item">
-                                    <div class="data-content">
-                                        <div class="data-title">Team A vs Team C</div>
-                                        <div class="data-info">September 5, 2022 - 7:00 PM</div>
-                                    </div>
-                                    <div class="data-action">
-                                        <button class="button primary outline small">Book</button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="data-item">
-                                    <div class="data-content">
-                                        <div class="data-title">Team B vs Team D</div>
-                                        <div class="data-info">September 6, 2022 - 6:30 PM</div>
-                                    </div>
-                                    <div class="data-action">
-                                        <button class="button primary outline small">Book</button>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="cell-md-6">
-                        <ul class="data-list">
-                            <li>
-                                <div class="data-item">
-                                    <div class="data-content">
-                                        <div class="data-title">Team C vs Team D</div>
-                                        <div class="data-info">September 10, 2022 - 8:00 PM</div>
-                                    </div>
-                                    <div class="data-action">
-                                        <button class="button primary outline small">Book</button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="data-item">
-                                    <div class="data-content">
-                                        <div class="data-title">Team A vs Team D</div>
-                                        <div class="data-info">September 12, 2022 - 7:30 PM</div>
-                                    </div>
-                                    <div class="data-action">
-                                        <button class="button primary outline small">Book</button>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+                <ul class="data-list">
+                    <li>
+                        <div class="data-item">
+                            <div class="data-content">
+                                <h4 class="data-title">Team A vs Team C</h4>
+                                <p class="data-info">5 de septiembre de 2022 - 7:00 PM</p>
+                            </div>
+                            <div class="data-action">
+                                <button class="button primary outline small">Detalles</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="data-item">
+                            <div class="data-content">
+                                <h4 class="data-title">Team B vs Team D</h4>
+                                <p class="data-info">6 de septiembre de 2022 - 6:30 PM</p>
+                            </div>
+                            <div class="data-action">
+                                <button class="button primary outline small">Detalles</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="data-item">
+                            <div class="data-content">
+                                <h4 class="data-title">Team C vs Team D</h4>
+                                <p class="data-info">10 de septiembre de 2022 - 8:00 PM</p>
+                            </div>
+                            <div class="data-action">
+                                <button class="button primary outline small">Detalles</button>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="data-item">
+                            <div class="data-content">
+                                <h4 class="data-title">Team A vs Team D</h4>
+                                <p class="data-info">12 de septiembre de 2022 - 7:30 PM</p>
+                            </div>
+                            <div class="data-action">
+                                <button class="button primary outline small">Detalles</button>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </div>
+        </section>
 
-        <!-- Tournament Standings -->
-        <div class="card mt-6">
-            <div class="card-header">TOURNAMENT STANDINGS</div>
+        <section class="card mt-6">
+            <header class="card-header">CLASIFICACIÓN DEL TORNEO</header>
             <div class="card-content">
-                <table class="table striped table-border mt-2">
+                <table class="table-custom striped">
                     <thead>
                         <tr>
-                            <th>Team</th>
-                            <th>Played</th>
-                            <th>Won</th>
-                            <th>Lost</th>
-                            <th>Points</th>
+                            <th>Equipo</th>
+                            <th>Jugados</th>
+                            <th>Ganados</th>
+                            <th>Perdidos</th>
+                            <th>Puntos</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -380,21 +384,20 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="main-container">
-            <div class="logo">Basketball Tournament</div>
-            <p>Control de Torneos de Basketball</p>
+            <p class="logo">Basketball Tournament</p>
+            <p>Control de Torneos de Baloncesto</p>
             <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
-            <p class="mt-4">© 2025 Basketball Tournament. All rights reserved.</p>
+            <p class="mt-4">© 2025 Basketball Tournament. Todos los derechos reservados.</p>
         </div>
     </footer>
 
