@@ -45,7 +45,7 @@
         }
 
         .main-container {
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
             padding: 0 1rem;
         }
@@ -239,6 +239,7 @@
         <p class="slogan">Web Edition</p>
     </header>
 
+    
     <main class="main-container">
         <section class="match-card">
             <h2 class="match-date">29 AGOSTO 2022</h2>
@@ -272,8 +273,8 @@
                     <div class="feature-icon">
                         <i class="fas fa-trophy"></i>
                     </div>
-                    <h3>Gestión de Torneos</h3>
-                    <p>Crea y gestiona torneos de baloncesto con nuestro sistema fácil de usar. Programa juegos, rastrea puntajes y administra equipos.</p>
+                    <h3><a href="team_matches_crud.php">Gestión de Partidos</a></h3>
+                    <p>Crea y gestiona partidos de baloncesto con nuestro sistema fácil de usar. Programa juegos, rastrea puntajes y administra equipos.</p>
                 </div>
             </div>
             <div class="cell-md-4">
@@ -281,22 +282,40 @@
                     <div class="feature-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3>Gestión de Equipos</h3>
+                    <h3><a href="teams_crud.php">Gestión de Equipos</a></h3>
                     <p>Registra equipos, gestiona listas y rastrea las estadísticas de los jugadores a lo largo del torneo.</p>
+                </div>
+            </div>
+            <div class="cell-md-4">
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <i class="fas fa-basketball-ball"></i>
+                    </div>
+                    <h3><a href="basketball_courts_crud.php">Gestión de Canchas</a></h3>
+                    <p>Gestiona las sedes de los equipos.</p>
+                </div>
+            </div>
+            <div class="cell-md-4">
+                <div class="feature-box">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3><a href="players_crud.php">Gestión de Jugadores</a></h3>
+                    <p><a href="team_players_crud.php">Registra los jugadores y los equipos en que juegan.</a></p>
                 </div>
             </div>
         </section>
 
         <section class="card mt-6">
             <header class="card-header">PRÓXIMOS PARTIDOS</header>
-            <div class="card-content">
+            <div class="card-content" style="overflow-x: auto;">
                 <iframe src="upcoming_matches_view.php" width="100%" height="600" frameborder="0"></iframe>
             </div>
         </section>
 
         <section class="card mt-6">
             <header class="card-header">CLASIFICACIÓN DEL TORNEO</header>
-            <div class="card-content">
+            <div class="card-content" style="overflow-x: auto;">
                 <iframe src="positions_view.php" width="100%" height="600" frameborder="0"></iframe>
             </div>
         </section>
